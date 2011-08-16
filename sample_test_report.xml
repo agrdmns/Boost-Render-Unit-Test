@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="render_test.xsl"?>
+<TestLog>
+  <TestSuite name="PulseTest">
+    <TestSuite name="VariantsSuite">
+      <TestCase name="simplePass">
+        <Message file="./boost/test/impl/results_collector.ipp"
+        line="220">
+          <![CDATA[Test case simplePass did not check any assertions]]>
+</Message>
+        <TestingTime>19</TestingTime>
+      </TestCase>
+      <TestCase name="checkFailure">
+        <Error file="sample_test.cpp" line="21">
+          <![CDATA[check add(2, 2) == 5 failed]]>
+</Error>
+        <TestingTime>32</TestingTime>
+      </TestCase>
+      <TestCase name="multipleCheckFailures">
+        <Error file="sample_test.cpp" line="26">
+          <![CDATA[check add(2, 2) == 3 failed]]>
+</Error>
+        <Info file="sample_test.cpp" line="27">
+          <![CDATA[check add(2, 2) == 4 passed]]>
+</Info>
+        <Error file="sample_test.cpp" line="28">
+          <![CDATA[check add(2, 2) == 5 failed]]>
+</Error>
+        <TestingTime>33</TestingTime>
+      </TestCase>
+      <TestCase name="requireFailure">
+        <FatalError file="sample_test.cpp" line="33">
+          <![CDATA[critical check add(2, 2) == 5 failed]]>
+</FatalError>
+        <TestingTime>54</TestingTime>
+      </TestCase>
+      <TestCase name="explicitError">
+        <Error file="sample_test.cpp" line="38">
+          <![CDATA[Error message]]>
+</Error>
+        <TestingTime>22</TestingTime>
+      </TestCase>
+      <TestCase name="explicitFailure">
+        <FatalError file="sample_test.cpp" line="43">
+          <![CDATA[Failure message]]>
+</FatalError>
+        <TestingTime>34</TestingTime>
+      </TestCase>
+      <TestCase name="errorThenFailure">
+        <FatalError file="sample_test.cpp" line="48">
+          <![CDATA[Error message]]>
+</FatalError>
+        <TestingTime>32</TestingTime>
+      </TestCase>
+      <TestCase name="uncaughtException">
+        <Exception file="unknown location" line="0">
+          <![CDATA[C string: Catch me if you can!]]>
+</Exception>
+        <TestingTime>47</TestingTime>
+      </TestCase>
+      <TestCase name="stdException">
+        <Exception file="unknown location" line="0">
+          <![CDATA[unknown type]]>
+</Exception>
+        <TestingTime>32</TestingTime>
+      </TestCase>
+      <TestCase name="checkMessageFailure">
+        <Error file="sample_test.cpp" line="64">
+          <![CDATA[add(..) result: 4]]>
+</Error>
+        <TestingTime>22</TestingTime>
+      </TestCase>
+      <TestCase name="checkEqualFailure">
+        <Error file="sample_test.cpp" line="69">
+          <![CDATA[check add( 2,2 ) == 5 failed [4 != 5]]]>
+</Error>
+        <TestingTime>28</TestingTime>
+      </TestCase>
+      <TestCase name="threeSeconds">
+        <Message file="./boost/test/impl/results_collector.ipp"
+        line="220">
+          <![CDATA[Test case threeSeconds did not check any assertions]]>
+</Message>
+        <TestingTime>50</TestingTime>
+      </TestCase>
+    </TestSuite>
+    <TestSuite name="PassingSuite">
+      <TestCase name="pass1">
+        <Message file="./boost/test/impl/results_collector.ipp"
+        line="220">
+          <![CDATA[Test case pass1 did not check any assertions]]>
+</Message>
+        <TestingTime>31</TestingTime>
+      </TestCase>
+      <TestCase name="pass2">
+        <Message file="./boost/test/impl/results_collector.ipp"
+        line="220">
+          <![CDATA[Test case pass2 did not check any assertions]]>
+</Message>
+        <TestingTime>26</TestingTime>
+      </TestCase>
+      <TestCase name="pass3">
+        <Message file="./boost/test/impl/results_collector.ipp"
+        line="220">
+          <![CDATA[Test case pass3 did not check any assertions]]>
+</Message>
+        <TestingTime>25</TestingTime>
+      </TestCase>
+    </TestSuite>
+    <TestSuite name="Physics">
+      <TestCase name="specialTheory">
+        <Message file="sample_test.cpp" line="100">
+          <![CDATA[setup mass]]>
+</Message>
+        <Info file="sample_test.cpp" line="116">
+          <![CDATA[check e == m * c * c passed]]>
+</Info>
+        <Message file="sample_test.cpp" line="105">
+          <![CDATA[teardown mass]]>
+</Message>
+        <TestingTime>71</TestingTime>
+      </TestCase>
+      <TestCase name="newton2">
+        <Message file="sample_test.cpp" line="100">
+          <![CDATA[setup mass]]>
+</Message>
+        <Info file="sample_test.cpp" line="124">
+          <![CDATA[check f == m * a passed]]>
+</Info>
+        <Message file="sample_test.cpp" line="105">
+          <![CDATA[teardown mass]]>
+</Message>
+        <TestingTime>53</TestingTime>
+      </TestCase>
+    </TestSuite>
+  </TestSuite>
+</TestLog>

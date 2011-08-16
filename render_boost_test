@@ -1,0 +1,129 @@
+#!/bin/bash
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# - boost unit testing
+# - 
+# - render_boost_test
+# -	Script to render the output from a boost test
+# - 
+# - 2011-07-13  Created by Sean Lynch
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PROGNAME=${0##*/}
+PROGVERSION=0.0.1
+
+function usage() {
+    cat <<EOF
+Usage: $PROGNAME [options]
+    Create an xml file with the output of a boost unit test. Then, if asked for,
+    render the xml file in a brawser of choice.
+
+Options:
+EOF
+
+    cat <<EOF | column -s\& -t
+    -h --help & Show this help
+    -v --version & Show version number
+    -t --testname & The test binary to render
+    -d --display [false] & Whether or not to render the output
+    & in the browser
+    & If ommitted, only the xml file is created.
+    -b --browser [default browser] & The browser to use to render output
+    & If ommitted, the default system browser will be used
+    -x --xslfile & The xsl file to use for rendering the xml
+    & output
+EOF
+}
+
+SHORTOPTS=hvt:db:x:
+LONGOPTS=help,version,testname:,display,browser::,xslfile:
+
+ARGS=`getopt -s bash -o $SHORTOPTS --long $LONGOPTS -n "$PROGNAME" -- "$@"`
+
+eval set -- $ARGS
+
+TESTNAME=
+XSLFILE=
+BROWSER=
+DISPLAY=0
+
+while true; do
+    case "$1" in
+	-h|--help)
+	    usage ; exit 0
+	    ;;
+	-v|--version)
+	    echo "$PROGNAME, version: $PROGVERSION" ; exit 0
+	    ;;
+	-t|--testname)
+	    TESTNAME=$2 ; shift 2
+	    ;;
+	-d|--display)
+	    DISPLAY=1 ; shift
+	    ;;
+	-b|--browser)
+	    BROWSER=$2 ; shift 2
+	    ;;
+	-x|--xslfile)
+	    XSLFILE=$2 ; shift 2
+	    ;;
+	--)
+	    shift ; break
+	    ;;
+	*)
+	    echo "Internal error parsing arguments!" ; exit 1
+	    ;;
+    esac
+done
+
+if [ -x "$TESTNAME" ]; then
+    echo "Creating output for: $TESTNAME..."
+else
+    echo "Error! Must specify the boost unit test to render"
+    usage
+    exit 1
+fi
+
+if [ -f "$XSLFILE" ]; then
+    echo "Rendering XML with XSL specification:"
+    echo "    $XSLFILE..."
+else
+    echo "FYI, your rendered output won't look very good without a valid XSL specification."
+    echo "    You can specify one with the --xslfile option."
+fi
+
+
+if [[ $DISPLAY -eq 1 ]]; then
+    if [ -n "$BROWSER" ]; then
+	echo "Using $BROWSER to display XML test output..."
+    else
+	echo "Using default system browser for display of XML output"
+    fi    
+else
+    echo "Only creating XML test output. To display use the --display option"
+fi
+
+REPORTNAME=${TESTNAME}_report.xml
+
+# Run the test and create the output
+./$TESTNAME --output_format=XML --log_level=all > $REPORTNAME 2> /dev/null
+
+tidy -xml -i -q -m $REPORTNAME &> /dev/null
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" > /tmp/tmpfile
+echo "<?xml-stylesheet type=\"text/xsl\" href=\"$XSLFILE\"?>" >> /tmp/tmpfile
+
+cat $REPORTNAME >> /tmp/tmpfile
+mv /tmp/tmpfile $REPORTNAME
+
+echo "Report created. It can be found in $REPORTNAME."
+
+if [[ $DISPLAY -eq 1 ]]; then
+    echo "Displaying output in your web browser..."
+    if [ -n "$BROWSER" ]; then
+	open -a $BROWSER $REPORTNAME
+    else
+	open $REPORTNAME
+    fi
+fi
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# - render_boost_test                                                        
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
