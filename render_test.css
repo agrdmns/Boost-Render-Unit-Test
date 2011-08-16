@@ -1,10 +1,10 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* - umodel testing */
+/* - boost unit testing */
 /* -  */
 /* - render_test.css */
-/* -	CSS definitions for the UModel testing */
-/* - 2011-04-07  Created by Sean Lynch */
-/* - Copyright (c) 2011 Sean Lynch. All Rights Reserved. */
+/* -	CSS for rendering the XML from a boost unit test */
+/* -  */
+/* - 2011-08-16  Created by Sean Lynch */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 html, body {
     color: #ccc;

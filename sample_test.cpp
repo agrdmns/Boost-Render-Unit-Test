@@ -1,6 +1,6 @@
 
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE PulseTest
+#define BOOST_TEST_MODULE SampleTest
 #include <boost/test/unit_test.hpp>
 #include <exception>
 #include <unistd.h>
