@@ -1,6 +1,15 @@
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// - boost unit test
+// - 
+// - sample_test.cpp
+// -	A set of sample boost unit tests
+// -
+// - 2011-08-15  Put together by Sean Lynch using the tests from 
+// -     https://github.com/jsankey/boost.test-examples
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE PulseTest
+#define BOOST_TEST_MODULE SampleTest
 #include <boost/test/unit_test.hpp>
 #include <exception>
 #include <unistd.h>
@@ -125,3 +134,7 @@ BOOST_AUTO_TEST_CASE(newton2)
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// - sample_test.cpp                                                          
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

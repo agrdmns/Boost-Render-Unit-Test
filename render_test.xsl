@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<!-- - umodel testing -->
+<!-- - boost unit testing -->
 <!-- -  -->
 <!-- - render_test.xsl -->
-<!-- -  xsl for the umodel test xml output -->
-<!-- - 2011-04-02  Created by Sean Lynch -->
-<!-- - Copyright (c) 2011 Sean Lynch. All Rights Reserved. -->
+<!-- -	XSL spec for rendering the output from a boost unit test -->
+<!-- -  -->
+<!-- - 2011-08-16  Created by Sean Lynch -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <xsl:stylesheet
     version="1.0" 
@@ -88,6 +88,7 @@
     </html>
   </xsl:template>
 </xsl:stylesheet>
+
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- - render_test.xsl                                                           -->
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
