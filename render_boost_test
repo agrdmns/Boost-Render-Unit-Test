@@ -77,14 +77,13 @@ done
 if [ -x "$TESTNAME" ]; then
     echo "Creating output for: $TESTNAME..."
 else
-    echo "Error! Must specify the boost unit test to render"
+    echo "Error! Must specify the boost unit test to render. Cannot find $TESTNAME"
     usage
     exit 1
 fi
 
 if [ -f "$XSLFILE" ]; then
-    echo "Rendering XML with XSL specification:"
-    echo "    $XSLFILE..."
+    echo "Rendering XML with XSL specification: $XSLFILE..."
 else
     echo "FYI, your rendered output won't look very good without a valid XSL specification."
     echo "    You can specify one with the --xslfile option."
