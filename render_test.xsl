@@ -16,12 +16,12 @@
   <xsl:template match="/TestLog">
     <html>
       <head>
-        <title>Sample Unit Test Output</title>
+        <title>Unit Test Output</title>
 	<link rel="stylesheet" href="render_test.css" type="text/css" media="screen" />
       </head>
       <body>
         <div id="main">
-          <h1>Sample Unit Test Output</h1>
+          <h1>Unit Test Output</h1>
 	  <br />
 	  <!-- Loop through all the standalone test cases  -->
           <xsl:for-each select="TestSuite/TestCase">
